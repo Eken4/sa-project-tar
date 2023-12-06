@@ -26,6 +26,7 @@ int main(int argc, char *argv[]){
     }
 
     tar_list(file);
+    tar_extract(file);
 
     printf("a l'affut\ndist\n");
 

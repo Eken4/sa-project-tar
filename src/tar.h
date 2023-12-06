@@ -10,6 +10,8 @@
 
 int tar_read_header(FILE* file, struct tar_header* header);
 
+void tar_extract(FILE* file);
+
 void tar_list(FILE* file);
 
 void print_small_header_info(struct tar_header* header);
@@ -17,5 +19,9 @@ void print_small_header_info(struct tar_header* header);
 void print_full_header_info(struct tar_header* header);
 
 bool header_is_empty(struct  tar_header* header);
+
+bool file_extract(FILE* archive, struct tar_header* header);
+
+bool folder_extract(struct tar_header* header);
 
 #endif //TAR__H

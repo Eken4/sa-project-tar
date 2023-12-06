@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <unistd.h>
+#include <sys/stat.h>
 
 #include "tar.h"
 
@@ -16,6 +17,30 @@ int tar_read_header(FILE* file, struct tar_header* header){
         return 0;
     }
 
+}
+
+void tar_extract(FILE* file){
+    long int archivesize=0;
+    long int readbytes=0;
+
+    struct tar_header headerstruct;
+
+    fseek(file, 0, SEEK_END);
+    archivesize=ftell(file);
+    fseek(file, -archivesize, SEEK_END);
+
+    while(true){
+        tar_read_header(file, &headerstruct);
+        if(header_is_empty(&headerstruct)){
+            printf("y a pu\ndist");
+            return;
+        }
+        if(strtol(headerstruct.size, NULL, 8)==0){
+            folder_extract(&headerstruct);
+        }
+        else file_extract(file, &headerstruct);        
+        
+    }
 }
 
 void tar_list(FILE* file){
@@ -73,4 +98,41 @@ bool header_is_empty(struct  tar_header* header)
 {
     if (header->name[0]=='\0' && header->size[0]=='\0' && header->type=='\0') return true;
     else return false;
+}
+
+bool file_extract(FILE* archive, struct tar_header* header){
+    FILE* newfile = fopen(header->name, "w");
+
+    long int headersize = strtol(header->size, NULL, 8);
+
+    if(!newfile) return false;
+
+    int* temp = malloc(512);
+
+    for (long int i =0; i< headersize; i+=512){
+        if((headersize)-i>511){
+            fread(temp, 512, 1, archive);
+            fwrite(temp, 512, 1, newfile);            
+        }
+        else {
+            fread(temp, headersize-i, 1, archive);
+            fwrite(temp, headersize-i, 1, newfile); 
+            fseek(archive, i+512-headersize, SEEK_CUR);
+            break;
+        }
+    }
+    
+    free(temp);
+    
+    fclose(newfile);
+    return true;
+
+}
+
+bool folder_extract(struct tar_header* header){
+    if(strtol(header->size, NULL, 8)>0){
+        return false;
+    }
+
+    return mkdir(header->name, strtol(header->mode, NULL, 8));
 }
