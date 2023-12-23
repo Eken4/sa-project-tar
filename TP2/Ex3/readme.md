@@ -1,4 +1,4 @@
-# Reverse Text File Program
+# Redirection de flux via pipe
 Same as shell script : "ps eaux | grep "^root " > /dev/null && echo "root est connecté""
 
 ## 1. How to Compile
