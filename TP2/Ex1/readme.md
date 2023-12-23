@@ -1,4 +1,4 @@
-# Reverse Text File Program
+# "Fork yourself"
 Display various informations about child process and PID
 
 ## 1. How to Compile
