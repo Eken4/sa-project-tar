@@ -1,4 +1,4 @@
-# Reverse Text File Program
+# Threaded sort
 Threaded sort
 Crée n threads, chaque thread calcule le min et le max d'une partie d'un tableau, et le résultat est affiché par le processus principal
 
