@@ -1,4 +1,4 @@
-# Reverse Text File Program
+# ls like program
 Display in terminal the metadata of a path
 
 ## 1. How to Compile
