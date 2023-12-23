@@ -1,4 +1,4 @@
-# Reverse Text File Program
+# Redirection de flux standard
 
 ## 1. How to Compile
 To compile the program, use the following command:
