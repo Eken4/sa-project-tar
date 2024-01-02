@@ -1,27 +1,15 @@
 
 # Proposer une stack applicative « wordpress »
 ## Prérequis
-### 0. Installer Docker sur Ubuntu
-Si Docker est déjà installé sur le système, passer à l'étape 2. Sinon, faire les commandes ci-dessous :
-```
-sudo apt update
-sudo apt install apt-transport-https ca-certificates curl software-properties-common
 
-# Ajoutez la clé GPG du référentiel Docker
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
-
-# Ajoutez le référentiel Docker au système
-echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-
-sudo apt update
-
-sudo apt install docker-ce docker-ce-cli containerd.io
-```
 Pour ce TP, nous aurons besoin de docker-compose. Pour l'installer :
 ```
 sudo apt install docker-compose
 ```
+
 ## Démarche en cinq étapes
+
+
 ### 1. La récupération des images depuis le hub docker.
 
 Pour commencer, téléchargez les dernières images Docker de MySQL et WordPress depuis Internet. Alternativement, vous pouvez charger les images depuis des fichiers avec la commande appropriée.
