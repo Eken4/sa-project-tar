@@ -1,5 +1,5 @@
 
-# Proposer un service d’infrastructure via conteneur
+# Proposer une stack applicative « wordpress »
 ## Prérequis
 ### 0. Installer Docker sur Ubuntu
 Si Docker est déjà installé sur le système, passer à l'étape 2. Sinon, faire les commandes ci-dessous :
@@ -78,9 +78,12 @@ docker-compose up -d
 ```
 docker ps
 ```
-S'assurer également de vérifier l'accessibilité de l'application via un navigateur.
+S'assurer également de vérifier l'accessibilité de l'application via un navigateur : http://localhost:8080
 ### 5. L’arrêt du conteneur associé.
 Arrêt de la stack complète :
 ```
 docker-compose down
 ```
+### Résultat
+![image](https://github.com/Eken4/sa-project-tar/assets/94603692/bb5c774a-7cbb-4bcb-8d88-deb9d816e58e)
+
