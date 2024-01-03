@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <sys/stat.h>
+#include <string.h>
 
 #include "tar.h"
 
@@ -129,10 +130,28 @@ bool file_extract(FILE* archive, struct tar_header* header){
 
 }
 
+/**
+ * \fn folder_extract
+ * \brief
+*/
 bool folder_extract(struct tar_header* header){
     if(strtol(header->size, NULL, 8)>0){
         return false;
     }
 
     return mkdir(header->name, strtol(header->mode, NULL, 8));
+}
+
+void add_file_to_archive(FILE* archive, FILE* file){
+
+
+}
+
+struct tar_header fill_header(FILE* archive, char* filename){
+    struct tar_header header;
+
+    strncpy(header.name, filename, 100);
+    header.name[sizeof(header.name)-1]='\0';
+
+    return header;
 }

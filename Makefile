@@ -10,6 +10,7 @@ LDFLAGS = -Wall -fsanitize=address
 # project structure
 SRC_FOLDER = src
 OUT_FOLDER = out
+DOC_FOLDER = doc
 
 # executable file
 EXEC = $(OUT_FOLDER)/$(notdir $(shell pwd))
@@ -32,6 +33,12 @@ clean :
 .PHONY: clear_objects
 clear_objects : 
 	rm -f $(OBJ)
+
+.PHONY: doc
+doc : 
+	rm -rf $(DOC_FOLDER)
+	mkdir $(DOC_FOLDER)
+	doxygen Doxyfile
 
 .PHONY: run
 run : $(EXEC)

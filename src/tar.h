@@ -24,4 +24,8 @@ bool file_extract(FILE* archive, struct tar_header* header);
 
 bool folder_extract(struct tar_header* header);
 
+void add_file_to_archive(FILE* archive, FILE* file);
+
+struct tar_header fill_header(FILE* archive, char[] filename);
+
 #endif //TAR__H
