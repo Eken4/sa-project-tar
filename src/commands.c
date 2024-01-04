@@ -27,7 +27,7 @@ void list(FILE *file)
         read_header(file, &headerstruct);
         if (header_is_empty(&headerstruct))
         {
-            printf("y a pu\ndist");
+            printf("Plus de fichiers\n");
             return;
         }
         print_small_header_info(&headerstruct);
@@ -60,7 +60,7 @@ void extract(FILE *file)
         read_header(file, &headerstruct);
         if (header_is_empty(&headerstruct))
         {
-            printf("y a pu\ndist");
+            printf("Plus de fichiers\n");
             return;
         }
         if (strtol(headerstruct.size, NULL, 8) == 0)
@@ -88,7 +88,7 @@ void create_archive(FILE *archive, char *filenames[], int nb_files)
 
         if (!(file = fopen(filenames[i], "r")))
         {
-            fprintf(stderr, "Error : tar_generate_archive() : cannot open file %s\n", filenames[i]);
+            fprintf(stderr, "Impossible d'ouvrir le fichier %s\n", filenames[i]);
 
             return;
         }
@@ -111,6 +111,12 @@ void create_archive(FILE *archive, char *filenames[], int nb_files)
 bool file_extract(FILE *archive, struct tar_header *header)
 {
     FILE *newfile = fopen(header->name, "w");
+
+    if(archive == NULL) 
+    {
+        fprintf(stderr, "Impossible d'ouvrir l'archive\n");
+        fprintf(stderr, strerror(errno));
+    }
 
     long int headersize = strtol(header->size, NULL, 8);
 

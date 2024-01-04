@@ -6,14 +6,13 @@
 int main(int argc, char *argv[])
 {
     int opt;
-    char *optarg;
     char *archivename;
     char *filenames[argc];
     int nb_files = 0;
 
     int list_opt = 0, extract_opt = 0, archive_opt = 0;
 
-    while ((opt = getopt(argc, argv, ":e:l:hc:")) != -1)
+    while ((opt = getopt(argc, argv, ":e:f:l:hc:")) != -1)
     {
         switch (opt)
         {
@@ -46,6 +45,7 @@ int main(int argc, char *argv[])
     if (!(archive = fopen(archivename, mode)))
     {
         fprintf(stderr, "Error : main() : cannot fopen archive\n");
+        fprintf(stderr, strerror(errno));
         return EXIT_FAILURE;
     }
 

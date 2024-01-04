@@ -15,7 +15,7 @@ int read_header(FILE *file, struct tar_header *header)
 {
     if (file == NULL)
     {
-        printf("Bad file\n");
+        printf("Mauvais fichier en entrée\n");
         return -1;
     }
 
@@ -135,7 +135,7 @@ struct tar_header fill_header(FILE *file, char *filename)
 
     if (fstat(fd, &file_stat) != 0)
     {
-        printf("C'est nuuuul\n");
+        printf("Mauvaises métadonnées\n");
         return header;
     }
 
