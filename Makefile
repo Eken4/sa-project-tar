@@ -1,5 +1,3 @@
-# makefile ultra utile et vachement soin
-
 # compiler options
 CXX = gcc
 CFLAGS = -Wall -fsanitize=address

@@ -1,16 +1,25 @@
 #ifndef TYPEDEF__H
 #define TYPEDEF__H
+/**
+ * \file typedef.h
+ * \brief Définition des types spécifiques pour les opérations sur les archives
+*/
 
-struct tar_header {
-    char name[100];         // filename
-    char mode[8];           // access mode
-    char owner[8];          // proprietary id
-    char group[8];          // group id
-    char size[12];          // filesize
-    char mtime[12];         // Last modification date
+/**
+ * \struct tar_header
+ * \brief liste des champs contenus dans un header
+*/
+struct tar_header
+{
+    char name[100]; // filename
+    char mode[8];   // access mode
+    char owner[8];  // proprietary id
+    char group[8];  // group id
+    char size[12];  // filesize
+    char mtime[12]; // Last modification date
     char checksum[8];
-    char type;              // File type      
-    char linkname[100];     // link name
+    char type;          // File type
+    char linkname[100]; // link name
     char magic[6];
     char version[2];
     char uname[32];
@@ -21,4 +30,4 @@ struct tar_header {
     char pad[12];
 };
 
-#endif //TYPEDEF__H
+#endif // TYPEDEF__H
